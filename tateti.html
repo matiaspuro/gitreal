@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<title>Tateti</title>
+
+<style type="text/css">
+
+#contenedor div {
+	
+	
+	
+	
+}
+	
+
+
+
+</style>
+
+
+
+
+
+<script type="text/javascript"> 
+
+var tatetiArray = [];
+
+
+window.onload = function(){
+	
+	
+
+for (var h=0; h < 9; h++)
+{
+    
+    tatetiArray[h]=0;
+    
+}
+
+
+
+
+var quepasa =  function hola () {
+
+
+alert("holaaaaaaa");
+
+
+
+};
+
+
+
+
+}
+
+ 
+
+//myButton.addEventListener('click', doSomething, false)
+
+
+        function insertoHumano (numero)
+
+            {
+
+              tatetiArray[numero]= 1 ;  
+
+
+
+            }
+
+
+
+
+
+        function casilleroOcupado(numero) {
+
+
+                if (tatetiArray[numero]!=0) {
+
+               
+                return true;
+
+                } else {
+
+                return false;
+
+                    }
+
+                }
+
+
+
+        function maquinaInsercion () {
+        var inserto = false;
+
+        if (arrayLleno()) {
+
+        inserto = true;
+
+        }
+
+        while (!inserto) {
+
+            var numeroMaquina = Math.floor((Math.random() * 10) );
+			
+            if (casilleroOcupado(numeroMaquina) || (numeroMaquina > 8)) { } else {
+
+				
+				
+				document.getElementById('casillero' + (numeroMaquina+1).toString()).style.backgroundColor="blue";
+                tatetiArray[numeroMaquina] = 2;
+				
+                inserto = true;
+				
+
+            }
+
+            }
+
+		}
+            
+            
+            
+            
+         function arrayLleno ()   {
+
+
+
+        for (var h=0;h<=8;h++)
+            {
+    
+                if (tatetiArray[h]==0){
+                    return false;
+                }
+    
+            }
+
+			window.alert("juego terminado empate :(..reiniciamos!!");
+			location.reload();
+              return true;
+
+
+
+
+         }
+            
+            
+            
+		function ejecutar (divboton) {
+			
+		var idPresionado = (divboton.id);	
+		var casilleroPresionado = (parseInt(idPresionado.substring(9))-1);
+		
+		
+		
+		if (casilleroOcupado(casilleroPresionado)){	 } else {
+			
+			
+		insertoHumano(casilleroPresionado);
+		divboton.style.background="green";	
+			
+			if (tateticheck()){ window.alert("LE GANE AL FUCKING COMPUTADOR"); location.reload()    } else {
+				
+				maquinaInsercion();
+				
+			
+				
+				if (tateticheck()){ window.alert("GANA LA MAQUINOLA"); location.reload();    } 
+				
+				
+			}
+		
+			
+			
+			
+			
+		}
+
+
+
+
+		}
+
+
+
+function tateticheck() {
+	
+	var filas = ["0,1,2", "3,4,5", "6,7,8","0,3,6","1,4,7","2,5,8","0,4,8","2,4,6"];
+	
+	for (var h=0;h<=7;h++) {
+		
+	var linea = filas[h].split(",");
+	parseInt(linea[0]);
+	parseInt(linea[1]);
+	parseInt(linea[2]);
+	
+	
+	var contenidoLinea = [tatetiArray[linea[0]],tatetiArray[linea[1]],tatetiArray[linea[2]]];
+	
+	
+	
+	
+		
+	if ((contenidoLinea[0]==contenidoLinea[1]) && (contenidoLinea[2]==contenidoLinea[1]) && contenidoLinea[1]!=0 )
+	
+		{
+		   return true;
+		
+		}
+		
+		
+	}
+	
+	
+	
+	
+	return false;
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</head>
+
+<body >
+
+
+<div id="contenedor" class="hola" style="background:url(tatetipng.png); width:210px; height:210px">
+    
+
+<div id="casillero1" onClick="ejecutar(this);" style="position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+<div id="casillero2" onClick="ejecutar(this)" style="position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+<div id="casillero3" onClick="ejecutar(this)" style="position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+
+
+<div id="casillero4" onClick="ejecutar(this)" style=" clear:both; position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+<div id="casillero5" onClick="ejecutar(this)" style="position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+<div id="casillero6" onClick="ejecutar(this)" style="position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+
+
+<div id="casillero7" onClick="ejecutar(this)" style=" clear:both; position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+<div id="casillero8"  onClick="ejecutar(this)" style="position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+<div id="casillero9" onClick="ejecutar(this)" style="position:relative; float:left; width:70px; height:70px"><a href="#" style=" display:block;width:70px; height:70px" onClick="return false"></a></div>
+
+
+
+
+    
+</div>    
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+
+</body>
+</html>
